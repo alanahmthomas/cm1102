@@ -1,0 +1,52 @@
+{% extends "index.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>So you're new here...</h1>
+    <hr>
+    <h2>Create an account and start shopping.</h2>
+    <hr>
+    <form action="" method="POST">
+        {{ form.hidden_tag() }}
+        
+        <div class="form-group">
+            {{ form.fullname.label }}
+            {% if form.fullname.errors %}
+            <div class="invalid">{{ form.fullname.errors[0] }}</div>
+            {% endif %}
+            {{ form.fullname }}
+        </div>
+
+        <div class="form-group">
+            {{ form.email.label }}
+            {% if form.email.errors %}
+            <div class="invalid">{{ form.email.errors[0] }}</div>
+            {% endif %}
+            {{ form.email }}
+        </div>
+        
+        <div class="form-group">
+            {{ form.password.label }}
+            {% if form.password.errors %}
+            <div class="invalid">{{ form.password.errors[0] }}</div>
+            {% endif %}
+            {{ form.password }}
+        </div>
+
+        <div class="form-group">
+            {{ form.confirm.label }}
+            {% if form.confirm.errors %}
+            <div class="invalid">{{ form.confirm.errors[0] }}</div>
+            {% endif %}
+            {{ form.confirm }}
+        </div>
+
+        <button type="submit">Register</button>
+        
+    </form>
+    <br>
+    <br>
+    <h2>Already have an account?</h2>
+    <p><a href="login">Sign in instead</a></p>
+</div>
+{% endblock %}

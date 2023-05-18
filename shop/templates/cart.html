@@ -1,0 +1,31 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+<h1>My Bag</h1>
+<hr>
+<h2>Free * Standard Delivery: Faster delivery options available to most countries.</h2>
+<hr>
+<br>
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+{% endwith %}
+
+<form method="POST" action="{{ url_for('cart') }}">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+        {{ form.product_id.label }}
+        {{ form.product_id(class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ form.submit(class="btn btn-primary") }}
+    </div>
+</form>
+{% endblock %}

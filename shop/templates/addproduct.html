@@ -1,0 +1,24 @@
+{% extends "index.html" %}
+{% block content %}
+<title>Add Product</title>
+<h1>Add Product</h1>
+<form method="POST" action="{{ url_for('addproduct') }}" enctype="multipart/form-data">
+    
+    <label for="product_name">Product Name:</label>
+    <input type="text" id="product_name" name="product_name" required><br>
+
+    <label for="price">Price:</label>
+    <input type="number" id="price" name="price" required><br>
+
+    <label for="product_description">Product Description:</label>
+    <input type="text" id="product_description" name="product_description" required><br>
+
+    <label for="product_environment">Product Environment:</label>
+    <input type="text" id="product_environment" name="product_environment" required><br>
+
+    <label for="image">Image:</label>
+        <input type="file" id="image" name="image"><br>
+
+    <input type="submit" value="Add Product">
+</form>
+{% endblock content %}

@@ -1,0 +1,25 @@
+{% extends "index.html" %}
+{% block content %}
+<h1>My Bag</h1>
+<hr>
+<h2>Checkout today for next day delivery!</h2>
+<hr>
+<table>
+    <thead>
+        <tr>
+            <th>Product Name</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for product in products %}
+        <tr>
+            <td>{{ product.name }}</td>
+            <td>{{ product.price }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<p>Total Price: {{ total_price }}</p> 
+<a href="{{ url_for('home') }}">Continue Shopping?. . . </a>
+{% endblock content %}

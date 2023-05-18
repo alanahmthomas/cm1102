@@ -1,0 +1,46 @@
+{% extends "index.html" %}
+
+{% block content %}
+<h1>Bestsellers clothing</h1>
+<hr>
+<h2>The ultimate question when your social cal' is filling up: ‘what are you going to wear?’</h2>
+<hr>
+<br>
+<div>
+    <form action="{{ url_for('home') }}" method="GET">
+        <label for="sort_by">Sort by:</label>
+        <select name="sort_by" id="sort_by">
+            <option value="name" {% if sort_by == 'name' %}selected{% endif %}>What's new </option>
+            <option value="price" {% if sort_by == 'price' %}selected{% endif %}>Price</option>
+            <option value="environment" {% if sort_by == 'environment' %}selected{% endif %}>Environmental Impact</option>
+        </select>
+    </form>
+</div>
+<br>
+<div class="product-cards">
+    {% for product in products %}
+    <div class="product-card">
+        <a href="{{ url_for('single_page', product_id=product.id) }}">
+            <img class="product-image" src="{{ url_for('static', filename=product.image) }}" alt="{{ product.name }}">
+            <div class="product-details">
+                <h3>{{ product.product_name }}</h3>
+                <p class="product-price">Price: £{{ product.price }}</p>
+                <p class="product-description">{{ product.description }}</p>
+                <p class="product-environment">Environment: {{ product.environment }}</p>
+            </div>
+            <button class="cart" onclick="cart('{{ product.id }}')">Add To Cart</button>
+        </a>
+    </div>
+    {% endfor %}
+</div>
+<img src="/path/to/ads.jpg" alt="Image ads">
+
+
+
+<!--JS add to cart-->
+    <script>
+        function addToCart(productId) {
+            console.log("Add to cart clicked for product with ID: " + productId);
+        }
+    </script>
+{% endblock content %}

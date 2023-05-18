@@ -1,0 +1,13 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+<form method="POST" action="" class="checkout_form">
+    {{ form.csrf_token }}
+    {{ form.name.label }} {{ form.name }}
+    {{ form.card_no.label }} {{ form.card_no }}
+    <br>
+    <br>
+    <input type="submit" value="Checkout">
+
+{% endblock content %}
